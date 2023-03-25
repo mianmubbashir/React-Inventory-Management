@@ -1,6 +1,6 @@
 const express = require("express");
 const { main } = require("./models/index");
-// const Register = require("./models/Register");
+const Register = require("./models/SignUp");
 // const usersRoute = require("./router/users");
 // const postRoute = require("./router/post");
 // const friendRoute = require("./router/friend");
@@ -67,27 +67,30 @@ app.get("/api", (req, res)=>{
 
 
 // ----------- Signup ------------------
-// app.post("/api/register", (req, res) => {
-//     console.log(req.body);
+app.post("/api/signup", async (req, res) => {
+    console.log(req.body);
 
-//     let registerUser = new Register({
-//         fullname: req.body.fullname,
-//         email: req.body.email,
-//         password: req.body.password,
-//     })
+    let registerUser = new Register({
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
+    })
 
-//     registerUser.save((err, result) => {
+    let newUser = await registerUser.save();
 
-//         if (err) {
-//             res.status(402).send(err);
+    res.json(newUser);
+    // registerUser.save((err, result) => {
+
+    //     if (err) {
+    //         res.status(402).send(err);
 
 
-//         }
-//         else {
-//             res.status(200).send(result);
-//         }
-//     })
-// });
+    //     }
+    //     else {
+    //         res.status(200).send(result);
+    //     }
+    // })
+});
 
 
 

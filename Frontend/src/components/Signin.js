@@ -1,11 +1,12 @@
-import { LockClosedIcon } from '@heroicons/react/20/solid'
+import { LockClosedIcon } from '@heroicons/react/20/solid';
 
 export default function Signin() {
+
   return (
     <>
-      <div class="grid grid-cols-1 sm:grid-cols-2 h-screen items-center place-items-center ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 h-screen items-center place-items-center ">
 
-      <div class="flex justify-center">
+      <div className="flex justify-center">
             <img
               className="w-100 h-100"
               src={require("../assets/Pic1.jpg")}
@@ -13,7 +14,7 @@ export default function Signin() {
             />
         </div>
 
-        <div class="w-full max-w-md space-y-8 p-10 rounded-lg">
+        <div className="w-full max-w-md space-y-8 p-10 rounded-lg">
             <h2 
             className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900"
             >

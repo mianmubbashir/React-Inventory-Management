@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Outlet, Link } from "react-router-dom";
-
+import AuthContext from '../AuthContext';
 
 function Sidebar() {
+
+  const authContext = useContext(AuthContext);
+  console.log("AUTHCONTEXT: ", authContext)
+
+  const logoutUser = () => {
+    authContext.signout();
+  }
+
+
   return (
     <div class="flex h-screen flex-col justify-between border-r bg-white">
   <div class="px-4 py-6">
@@ -206,7 +215,7 @@ function Sidebar() {
               />
             </svg>
 
-            <span class="text-sm font-medium">LogOut </span>
+            <span class="text-sm font-medium" onClick={logoutUser}>LogOut </span>
           </div>
 
           <span class="shrink-0 transition duration-300 group-open:-rotate-180">
