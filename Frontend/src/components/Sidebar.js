@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import AuthContext from '../AuthContext';
 
 function Sidebar() {
@@ -48,7 +48,7 @@ function Sidebar() {
           />
         </svg>
 
-        <span class="text-sm font-medium"><Link to="/">Dashboard</Link></span>
+        <span class="text-sm font-medium" ><Link to="/">Dashboard</Link></span>
       </a>
 
 
