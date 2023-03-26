@@ -1,35 +1,25 @@
 const express = require("express");
 const { main } = require("./models/index");
 const Register = require("./models/SignUp");
-const productRoute = require("./routes/AddProduct");
-const purchaseRoute = require("./routes/AddPurchase");
-const stockRoute = require("./routes/UpdateStock");
-const storeRoute = require("./routes/AddStore");
-const saleRoute = require("./routes/AddSale");
+const productRoute = require("./routes/Product");
+const purchaseRoute = require("./routes/Purchase");
+const storeRoute = require("./routes/Store");
+const saleRoute = require("./routes/Sale");
 const cors = require('cors')
 const app = express();
 main();
-
-// const port = 5000;
 
 
 app.use(express.json());
 app.use(cors());
 
 
-app.use("/api/AddProduct", productRoute);
-app.use("/api/AddPurchase", purchaseRoute);
-app.use("/api/UpdateStock", stockRoute);
-app.use("/api/AddStore", storeRoute);
-app.use("/api/AddSale", saleRoute);
+app.use("/api/Product", productRoute);
+app.use("/api/Purchase", purchaseRoute);
+app.use("/api/Store", storeRoute);
+app.use("/api/Sale", saleRoute);
 
 
-app.get("/api", (req, res)=>{
-    res.json({
-        mian: 'mubashir'
-    });
-
-});
 
 
 
@@ -37,7 +27,6 @@ app.get("/api", (req, res)=>{
 let userAuthCheck;
 app.post("/api/signin", async (req, res) => {
     console.log(req.body)
-    // res.send("hi");
     try {
         const user = await Register.findOne({
             email: req.body.email,

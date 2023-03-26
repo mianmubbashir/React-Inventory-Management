@@ -3,7 +3,11 @@ import { useState } from "react";
 import AddProduct from "./AddProduct";
 
 function Inventory() {
- const [showAddProduct, setShowAddProduct] = useState('false')
+ const [showAddProduct, setShowAddProduct] = useState(false)
+
+ const showProduct = () => {
+    setShowAddProduct(!showAddProduct)
+ }
 
   return (
     <div className="flex justify-center bg-slate-20 flex-col gap-6 h-fit">
@@ -56,7 +60,7 @@ function Inventory() {
 <div>
   <div class="py-20">
      <div className="flex justify-between ">
-             <div class="whitespace-nowrap px-4 py-2 text-left font-large text-gray-900 ">
+             <div class="mt-6 text-lg font-bold leading-6 text-gray-900 ml-3 ">
                   Orders
              </div>
 
@@ -64,16 +68,12 @@ function Inventory() {
                 <button
                   class="inline-block rounded border border-blue-600 bg-blue-600 px-4 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring "
                   href="/download"
-                  onClick={showAddProduct && <AddProduct />}
+                  onClick={showProduct}
                 >
                   Add Product
                 </button>
-                <a
-                  class="inline-block rounded border border-blue-600 bg-blue-600 px-4 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
-                  href="/download"
-                >
-                  ....Filter
-                </a>
+                {showAddProduct && <AddProduct />}
+               
                 </div>
       </div>
 
@@ -83,19 +83,19 @@ function Inventory() {
             <thead>
               <tr>
                 <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  Products
+                  Product Name
                 </th>
                 <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  Buying Price
+                  Price
                 </th>
                 <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
                   Quantity
                 </th>
                 <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  threshold Value
+                  Manufacturer
                 </th>
                 <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  Expiry Date
+                  description
                 </th>
                 <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
                   Availability
@@ -118,9 +118,19 @@ function Inventory() {
                 <td class="whitespace-nowrap px-4 py-2 text-gray-700">
                   11/12/22
                 </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {" "}
-                  in stock
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700 gap-6">
+                <button
+                  class="inline-block rounded border border-blue-600 bg-green-600 px-2 py-2 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring mr-2"
+                  href="/download"
+                >
+                  update
+                </button>
+                <button
+                  class="inline-block rounded border border-blue-600 bg-red-600 px-2 py-2 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring"
+                  href="/download"
+                >
+                  delete
+                </button>
                 </td>
               </tr>
 

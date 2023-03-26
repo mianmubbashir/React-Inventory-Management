@@ -1,13 +1,24 @@
 import React from 'react'
+import { useState } from "react";
+import AddSale from './AddSale'
 
 function Sales() {
+
+  const [showAddSale, setShowAddSale] = useState(false)
+
+  const showSale = () => {
+     setShowAddSale(!showAddSale)
+  }
+ 
+
   return (
-    <div>
-        
-        <div>
+   <div>
+
+
+<div>
   <div class="">
      <div className="flex justify-between ">
-             <div class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900 ">
+             <div class="mt-5 text-lg font-bold leading-6 text-gray-900 ml-2">
                   Orders
              </div>
 
@@ -15,9 +26,11 @@ function Sales() {
                 <button
                   class="inline-block rounded border border-blue-600 bg-blue-600 px-4 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring "
                   href="/download"
+                  onClick={showSale}
                 >
-                  Add Sales
+                  Add Sales Details
                 </button>
+                {showAddSale && <AddSale />}
                 </div>
       </div>
 
