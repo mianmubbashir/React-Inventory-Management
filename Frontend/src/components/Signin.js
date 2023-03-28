@@ -2,6 +2,8 @@ import { LockClosedIcon } from '@heroicons/react/20/solid';
 import AuthContext from '../AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { useState, useContext } from 'react';
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Signin() {
 
@@ -14,8 +16,9 @@ export default function Signin() {
 const authcontext = useContext(AuthContext);
 const navigate = useNavigate();
 
-// const notifySuccess = () => toast.success("Successfully Login", { position: toast.POSITION.TOP_CENTER });
-// const notifyWarn = () => toast.warning("Wrong Credentials", { position: toast.POSITION.TOP_CENTER });
+
+const signinSuccess = () => toast.success("Successfully Login", { position: toast.POSITION.TOP_CENTER });
+const notifyWarn = () => toast.warning("Wrong Credentials", { position: toast.POSITION.TOP_CENTER });
 
 
 const authCheck = () => {
@@ -23,15 +26,12 @@ const authCheck = () => {
         fetch('http://localhost:4000/api/signin')
             .then(response => response.json())
             .then(data => {
-                // notifySuccess();
                 localStorage.setItem("user", JSON.stringify(data));
                 authcontext.signin(data._id, () => {
                     navigate('/');
-
                 })
             })
             .catch((err) => {
-                // notifyWarn();
                 console.log(err)
             })
 
@@ -54,10 +54,11 @@ const loginUser = (e) => {
           },
           body: JSON.stringify(text)
       }).then((result) => {
-          
           console.log("User login", result);
+          signinSuccess();
       })
           .catch((error) => {
+            notifyWarn();
               console.log("Something went wrong ", error);
           })
   }
@@ -122,7 +123,7 @@ const loginUser = (e) => {
 
               <div className="text-sm">
                 <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                  Forgot your password?
+                   Forgot your password? &nbsp;Signup
                 </a>
               </div>
             </div>
@@ -141,9 +142,8 @@ const loginUser = (e) => {
             </div>
           </form>
         </div>
-
-
       </div>
+      <ToastContainer />
     </>
   )
 }

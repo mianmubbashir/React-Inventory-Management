@@ -94,43 +94,6 @@ export default function StoreLocation() {
                            />
                           </div>
 
-                          {/* <div>
-                            <label
-                              class="text-md font-medium text-gray-700 dark:text-gray-900"
-                              for="price"
-                            >
-                              Buying Price
-                            </label>
-                            <input
-                              type="number"
-                              name="price"
-                              id="price"
-                              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-400 dark:text-gray-900 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                              value={product.price}
-                              onChange={(e) =>
-                                updateProduct(e.target.name, e.target.value)
-                              }
-                            />
-                          </div> */}
-
-                          {/* <div>
-                            <label
-                              class="text-md font-medium text-gray-700 dark:text-gray-900"
-                              for="quantity"
-                            >
-                              Quantity
-                            </label>
-                            <input
-                             type="number"
-                             name="quantity"
-                             id="quantity"
-                             class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-400 dark:text-gray-900 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                             value={product.quantity}
-                             onChange={(e) =>
-                                updateProduct(e.target.name, e.target.value)
-                              }
-                           />
-                          </div> */}
 
                           <div>
                             <label
@@ -150,32 +113,7 @@ export default function StoreLocation() {
                              }
                           />
                            </div>
-{/* 
-                          <div class="sm:col-span-2">
-                            <label
-                              for="description"
-                              class="block mb-4 text-md font-medium text-gray-900 dark:text-black"
-                            >
-                              Description
-                            </label>
-                            <textarea
-                              id="description"
-                              rows="5"
-                              name="description"
-                              class="block p-2.5 w-full text-sm text-black-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-400 dark:border-gray-900 dark:placeholder-black-900 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                              placeholder="Write a description..."
-                              value={product.description}
-                              onChange={(e) =>
-                                updateProduct(e.target.name, e.target.value)
-                              }
-                            >
-                              Standard glass, 3.8GHz 8-core 10th-generation
-                              Intel Core i7 processor, Turbo Boost up to 5.0GHz,
-                              16GB 2666MHz DDR4 memory, Radeon Pro 5500 XT with
-                              8GB of GDDR6 memory, 256GB SSD storage, Gigabit
-                              Ethernet, Magic Mouse 2, Magic Keyboard - US
-                            </textarea>
-                          </div>  */}
+
 
                         </div>
 

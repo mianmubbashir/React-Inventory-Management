@@ -7,7 +7,9 @@ const AddProductSchema = new mongoose.Schema({
     quantity: Number,
     manufacturer: String,
     description: String,
-})
+},
+ { timestamps: true }
+)
 
 const AddProduct = mongoose.model("Product", AddProductSchema);
 module.exports = AddProduct;

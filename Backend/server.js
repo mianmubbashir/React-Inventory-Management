@@ -2,7 +2,7 @@ const express = require("express");
 const { main } = require("./models/index");
 const Register = require("./models/SignUp");
 const productRoute = require("./routes/Product");
-const purchaseRoute = require("./routes/Purchase");
+// const purchaseRoute = require("./routes/Purchase");
 const storeRoute = require("./routes/Store");
 const saleRoute = require("./routes/Sale");
 const cors = require('cors')
@@ -15,7 +15,7 @@ app.use(cors());
 
 
 app.use("/api/Product", productRoute);
-app.use("/api/Purchase", purchaseRoute);
+// app.use("/api/Purchase", purchaseRoute);
 app.use("/api/Store", storeRoute);
 app.use("/api/Sale", saleRoute);
 

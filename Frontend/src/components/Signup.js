@@ -1,6 +1,8 @@
 import { LockClosedIcon } from '@heroicons/react/20/solid';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Signup() {
   const [userDetails, setUserDetails] = useState({
@@ -11,7 +13,7 @@ export default function Signup() {
 
 const navigate = useNavigate();
 
-// const notifyWarn = () => toast.warning("User already exist or something went wrong", { position: toast.POSITION.TOP_CENTER });
+const notifyWarn = () => toast.warning("User already exist or something went wrong", { position: toast.POSITION.TOP_CENTER });
 
 
 const registerUser = (e) => {
@@ -32,7 +34,7 @@ const registerUser = (e) => {
             navigate('/signin');
         })
             .catch((error) => {
-                // notifyWarn();
+                notifyWarn();
                 console.log("Something went wrong ", error);
             })
 
@@ -130,6 +132,7 @@ const registerUser = (e) => {
         </div>
 
       </div>
+      <ToastContainer />
     </>
   )
 }

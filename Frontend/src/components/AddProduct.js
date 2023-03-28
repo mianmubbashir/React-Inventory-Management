@@ -1,10 +1,13 @@
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useContext, useRef, useState} from "react";
 import { Dialog, Transition } from "@headlessui/react";
-// import { PlusIcon } from "@heroicons/react/24/outline";
+import AuthContext from "../AuthContext";
+// import { ToastContainer,toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 export default function AddProduct() {
+  const authContext = useContext(AuthContext)
   const [product, setProduct] = useState({
-    // userId: _id,
+    userId: authContext.user,
     name: "",
     price: "",
     quantity: "",
@@ -14,6 +17,9 @@ export default function AddProduct() {
   console.log("Product: ", product);
   const [open, setOpen] = useState(true);
   const cancelButtonRef = useRef(null);
+
+
+  // const notifyAdded = () => toast.success("Sucessfully Added...", { position: toast.POSITION.TOP_CENTER });
 
   const updateProduct = (key, value) => {
     console.log(key);
@@ -29,13 +35,16 @@ export default function AddProduct() {
       body: JSON.stringify(product),
     })
       .then((result) => {
-        alert("Product ADDED");
+        // notifyAdded();
+        alert("Product ADDED", result);
         setOpen(false);
       })
       .catch((err) => console.log(err));
   };
 
   return (
+
+  <>
     <Transition.Root show={open} as={Fragment}>
       <Dialog
         as="div"
@@ -216,5 +225,7 @@ export default function AddProduct() {
         </div>
       </Dialog>
     </Transition.Root>
+    {/* <ToastContainer /> */}
+    </>
   );
 }
