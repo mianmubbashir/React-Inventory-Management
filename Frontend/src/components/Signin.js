@@ -2,8 +2,8 @@ import { LockClosedIcon } from '@heroicons/react/20/solid';
 import AuthContext from '../AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { useState, useContext } from 'react';
-import { ToastContainer,toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer,toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 export default function Signin() {
 
@@ -17,8 +17,8 @@ const authcontext = useContext(AuthContext);
 const navigate = useNavigate();
 
 
-const signinSuccess = () => toast.success("Successfully Login", { position: toast.POSITION.TOP_CENTER });
-const notifyWarn = () => toast.warning("Wrong Credentials", { position: toast.POSITION.TOP_CENTER });
+// const signinSuccess = () => toast.success("Successfully Login", { position: toast.POSITION.TOP_CENTER });
+// const notifyWarn = () => toast.warning("Wrong Credentials", { position: toast.POSITION.TOP_CENTER });
 
 
 const authCheck = () => {
@@ -55,10 +55,10 @@ const loginUser = (e) => {
           body: JSON.stringify(text)
       }).then((result) => {
           console.log("User login", result);
-          signinSuccess();
+          // signinSuccess();
       })
           .catch((error) => {
-            notifyWarn();
+            // notifyWarn();
               console.log("Something went wrong ", error);
           })
   }
@@ -143,7 +143,7 @@ const loginUser = (e) => {
           </form>
         </div>
       </div>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
     </>
   )
 }

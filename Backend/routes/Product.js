@@ -13,6 +13,6 @@ app.get('/get', Product.getAllProduct );
 app.delete('/delete/:id', Product.productDelete)
 
 //Update Product
-app.put('/update/:id', Product.productUpdate)
+// app.put('/update/:id', Product.productUpdate)
 
 module.exports = app;

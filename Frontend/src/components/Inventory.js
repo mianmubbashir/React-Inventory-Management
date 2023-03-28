@@ -87,12 +87,13 @@ function Inventory() {
               <tr>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-900"> 14 </td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  868 25000
+               25000
                 </td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  5 2500
+                 35000
                 </td>
-                <td className="whitespace-nowrap px-4 py-2 text-gray-700">12 2</td>
+                <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                120</td>
               </tr>
 
               <tr>
@@ -100,13 +101,13 @@ function Inventory() {
                   last 7 days
                 </td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-400">
-                  last 7 days Revenue
+                  Revenue
                 </td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-400">
-                  last 7 days cost
+                 cost
                 </td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-400">
-                  ordered not in stock
+                  ordered not
                 </td>
               </tr>
             </tbody>
@@ -139,21 +140,21 @@ function Inventory() {
                 <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
                   Product Name
                 </th>
-                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                {/* <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
                   Price
                 </th>
                 <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
                   Quantity
-                </th>
+                </th> */}
                 <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
                   Manufacturer
                 </th>
                 <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
                   description
                 </th>
-                <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                {/* <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
                   Availability
-                </th>
+                </th> */}
               </tr>
             </thead>
 
@@ -161,15 +162,15 @@ function Inventory() {
               {product.map((element, index) => {
                 return (
                   <tr key={index}>
-                    <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                    <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-700">
                       {element.name}
                     </td>
-                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                    {/* <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                       {element.price}
                     </td>
                     <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                       {element.quantity}
-                    </td>
+                    </td> */}
                     <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                       {element.manufacturer}
                     </td>
@@ -177,13 +178,13 @@ function Inventory() {
                       {element.description}
                     </td>
                     {/* <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                 {element.createdAt.slice(0,10)}
+                 {element.createdAt}
                 </td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                 {element.updatedAt.slice(0,10)}
-                </td> */}
+                 {element.updatedAt}
+                </td>  */}
 
-                    <td className="whitespace-nowrap px-4 py-2 text-gray-700 gap-6">
+                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                       <button
                         className="inline-block rounded border border-blue-600 bg-green-600 px-2 py-2 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring mr-2"
                         href="/download"

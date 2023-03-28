@@ -1,15 +1,33 @@
 import React from 'react'
 import { useState } from "react";
-import AddSale from './AddSale'
+import AddSale from './AddSale';
+import { useEffect } from "react";
+import axios from 'axios';
 
 function Sales() {
-
+  const [sale, setSale] = useState([]);
+  console.log('sale ////',sale)
   const [showAddSale, setShowAddSale] = useState(false)
 
   const showSale = () => {
      setShowAddSale(!showAddSale)
   }
  
+  useEffect(() => {
+    fetchSales();
+  }, []);
+
+  // const notifyWarn = () => toast.warning("Are You Sure", { position: toast.POSITION.TOP_CENTER });
+
+  const fetchSales = async () => {
+    try {
+      const res = await axios.get("http://localhost:4000/api/Sale/get");
+      setSale(res.data);
+    } catch (error) {
+      console.log("SALES: ERROR", error);
+      // setErrors(error.response.data);
+    }
+  };
 
   return (
    <div>
@@ -40,327 +58,44 @@ function Sales() {
             <thead>
               <tr>
                 <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  Supplier Name
+                  Product Id
                 </th>
                 <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  Product
+                  store Id
                 </th>
                 <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  Contact Number
+                  Quantity
                 </th>
                 <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  Email
+                  Sale Date
                 </th>
                 <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  type
-                </th>
-                <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
-                  On the way
+                 Total Sale Amount
                 </th>
               </tr>
             </thead>
 
             <tbody class="divide-y divide-gray-200">
-              <tr>
+              {sale.map((element,index) =>{
+                return(
+              <tr key={index}>
                 <td class="whitespace-nowrap px-4 py-2  text-gray-900">
-                  Richard Martin
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">kit kat</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  9984756789
+                  {element.productId}
                 </td>
                 <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  richard@gmail.com
+                 {element.storeId}</td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                {element.quantity}
                 </td>
                 <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  Taking Return
+                {element.date.slice(0,10)}
                 </td>
                 <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {" "}
-                  13
+                 {element.amount} 
                 </td>
               </tr>
 
-              <tr>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-900">
-                  Tom Homan
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">mazaa</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                9984756789
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  Tom@gmail.com
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                Taking Return
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {" "}
-                  -
-                </td>
-              </tr>
-
-              <tr>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-900">
-                  Viandir
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">Dairy Milk</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                9984756789
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  Viandir@gmail.com
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                Taking Return
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {" "}
-                  -
-                </td>
-              </tr>
-
-              <tr>
-                <td class="whitespace-nowrap px-4 py-2  text-gray-900">
-                  Charlin
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">Tomato</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                9984756789
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  charlin@gmail.com
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                Taking Return
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {" "}
-                  7
-                </td>
-              </tr>
-
-              <tr>
-                <td class="whitespace-nowrap px-4 py-2  text-gray-900">
-                 Hoffman
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">Milk Bikis</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                9984756789
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  hoffman@gmail.com
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                Taking Return
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {" "}
-                  -
-                </td>
-              </tr>
-
-              <tr>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-900">
-                  Martin
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">Marie Gold</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                9984756789
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  martin@gmail.com
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                Taking Return
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {" "}
-                  9
-                </td>
-              </tr>
-
-
-              <tr>
-                <td class="whitespace-nowrap px-4 py-2  text-gray-900">
-                  Richard Martin
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">kit kat</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  9984756789
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  richard@gmail.com
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  Taking Return
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {" "}
-                  13
-                </td>
-              </tr>
-
-              <tr>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-900">
-                  Tom Homan
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">mazaa</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                9984756789
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  Tom@gmail.com
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                Taking Return
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {" "}
-                  -
-                </td>
-              </tr>
-
-              <tr>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-900">
-                  Viandir
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">Dairy Milk</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                9984756789
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  Viandir@gmail.com
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                Taking Return
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {" "}
-                  -
-                </td>
-              </tr>
-
-              <tr>
-                <td class="whitespace-nowrap px-4 py-2  text-gray-900">
-                  Charlin
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">Tomato</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                9984756789
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  charlin@gmail.com
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                Taking Return
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {" "}
-                  7
-                </td>
-              </tr>
-
-              <tr>
-                <td class="whitespace-nowrap px-4 py-2  text-gray-900">
-                 Hoffman
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">Milk Bikis</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                9984756789
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  hoffman@gmail.com
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                Taking Return
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {" "}
-                  -
-                </td>
-              </tr>
-
-              <tr>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-900">
-                  Martin
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">Marie Gold</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                9984756789
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  martin@gmail.com
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                Taking Return
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {" "}
-                  9
-                </td>
-              </tr>
-              <tr>
-                <td class="whitespace-nowrap px-4 py-2  text-gray-900">
-                  Richard Martin
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">kit kat</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  9984756789
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  richard@gmail.com
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  Taking Return
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {" "}
-                  13
-                </td>
-              </tr>
-
-              <tr>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-900">
-                  Tom Homan
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">mazaa</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                9984756789
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  Tom@gmail.com
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                Taking Return
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {" "}
-                  -
-                </td>
-              </tr>
-
-              <tr>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-900">
-                  Viandir
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">Dairy Milk</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                9984756789
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  Viandir@gmail.com
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                Taking Return
-                </td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {" "}
-                  -
-                </td>
-              </tr>
-
+            )})}
             </tbody>
           </table>
         </div>

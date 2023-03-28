@@ -1,17 +1,22 @@
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useCallback, useContext, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import AuthContext from "../AuthContext";
 
 export default function AddSale() {
+  const authContext =useContext(AuthContext)
   const [sale, setSale] = useState({
-    name: "",
-    price: "",
+    userId: authContext.user,
+    productId: "",
+    storeId: "",
     quantity: "",
-    manufacturer: "",
-    description: "",
+    date: "",
+    amount: "",
   });
   console.log("Sale: ", sale);
   const [open, setOpen] = useState(true);
   const cancelButtonRef = useRef(null);
+
+
 
   const updateSale = (key, value) => {
     console.log(key);
@@ -67,7 +72,6 @@ export default function AddSale() {
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                 <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                   <div className="sm:flex sm:items-start">
-              
                     <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left ">
                       <Dialog.Title
                         as="h3"
@@ -81,35 +85,16 @@ export default function AddSale() {
                           <div>
                             <label
                               class="text-md font-medium text-gray-700 dark:text-gray-900"
-                              for="username"
+                              htmlFor="username"
                             >
-                              Product Name
+                              Product Id
                             </label>
                             <input
-                             type="text"
-                             name="name"
-                             id="name"
-                             class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-400 dark:text-gray-00 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                             value={sale.name}
-                             onChange={(e) =>
-                               updateSale(e.target.name, e.target.value)
-                             }
-                           />
-                          </div>
-
-                          <div>
-                            <label
-                              class="text-md font-medium text-gray-700 dark:text-gray-900"
-                              for="price"
-                            >
-                              Buying Price
-                            </label>
-                            <input
-                              type="number"
-                              name="price"
-                              id="price"
-                              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-400 dark:text-gray-900 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                              value={sale.price}
+                              type="text"
+                              name="product id"
+                              id="product id"
+                              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-400 dark:text-gray-00 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                              value={sale.productId}
                               onChange={(e) =>
                                 updateSale(e.target.name, e.target.value)
                               }
@@ -119,78 +104,84 @@ export default function AddSale() {
                           <div>
                             <label
                               class="text-md font-medium text-gray-700 dark:text-gray-900"
-                              for="quantity"
+                              htmlFor="Store Id"
                             >
-                              Quantity
+                              Store Id
                             </label>
                             <input
-                             type="number"
-                             name="quantity"
-                             id="quantity"
-                             class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-400 dark:text-gray-900 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                             value={sale.quantity}
-                             onChange={(e) =>
+                              type="text"
+                              name="store id"
+                              id="store id"
+                              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-400 dark:text-gray-900 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                              value={sale.storeId}
+                              onChange={(e) =>
                                 updateSale(e.target.name, e.target.value)
                               }
-                           />
+                            />
                           </div>
 
                           <div>
                             <label
                               class="text-md font-medium text-gray-700 dark:text-gray-900"
-                              for="manufacturer"
+                              htmlFor="quantity"
                             >
-                              Manufacturer
+                              Quantity
                             </label>
                             <input
-                             type="text"
-                             name="manufacturer"
-                             id="manufacturer"
-                             class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-400 dark:text-gray-900 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                             value={sale.manufacturer}
-                             onChange={(e) =>
-                               updateSale(e.target.name, e.target.value)
-                             }
-                          />
-                          </div>
-
-                          <div class="sm:col-span-2">
-                            <label
-                              for="description"
-                              class="block mb-4 text-md font-medium text-gray-900 dark:text-black"
-                            >
-                              Description
-                            </label>
-                            <textarea
-                              id="description"
-                              rows="5"
-                              name="description"
-                              class="block p-2.5 w-full text-sm text-black-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-400 dark:border-gray-900 dark:placeholder-black-900 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                              placeholder="Write a description..."
-                              value={sale.description}
+                              type="number"
+                              name="quantity"
+                              id="quantity"
+                              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-400 dark:text-gray-900 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                              value={sale.quantity}
                               onChange={(e) =>
                                 updateSale(e.target.name, e.target.value)
                               }
-                            >
-                              Standard glass, 3.8GHz 8-core 10th-generation
-                              Intel Core i7 processor, Turbo Boost up to 5.0GHz,
-                              16GB 2666MHz DDR4 memory, Radeon Pro 5500 XT with
-                              8GB of GDDR6 memory, 256GB SSD storage, Gigabit
-                              Ethernet, Magic Mouse 2, Magic Keyboard - US
-                            </textarea>
+                            />
                           </div>
 
+                          <div>
+                            <label
+                              class="text-md font-medium text-gray-700 dark:text-gray-900"
+                              htmlFor="date"
+                            >
+                              Date
+                            </label>
+                            <input
+                              type="date"
+                              name="date"
+                              id="date"
+                              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-400 dark:text-gray-900 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                              value={sale.date}
+                              onChange={(e) =>
+                                updateSale(e.target.name, e.target.value)
+                              }
+                            />
+                          </div>
+
+                          <div>
+                            <label
+                              class="text-md font-medium text-gray-700 dark:text-gray-900"
+                              htmlFor="sale"
+                            >
+                              Total Sale Amount
+                            </label>
+                            <input
+                              type="number"
+                              name="amount"
+                              id="amount"
+                              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-400 dark:text-gray-900 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                              value={sale.amount}
+                              onChange={(e) =>
+                                updateSale(e.target.name, e.target.value)
+                              }
+                            />
+                          </div>
                         </div>
-
-                   </form>
-
-                      
+                      </form>
                     </div>
                   </div>
                 </div>
 
-
-                
                 <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                   <button
                     type="button"

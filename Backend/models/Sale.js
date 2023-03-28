@@ -2,12 +2,13 @@ const mongoose = require("mongoose");
 
 const AddSaleSchema = new mongoose.Schema({
     userId: String,
-    name: String,
-    price: Number,
+    productId: String,
+    storeId: String,
     quantity: Number,
-    manufacturer: String,
-    description: String,
-})
+    date: Date,
+    amount: String,
+},
+)
 
 const AddSale = mongoose.model("Sale", AddSaleSchema);
 module.exports = AddSale;

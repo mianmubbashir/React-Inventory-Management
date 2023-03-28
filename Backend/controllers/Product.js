@@ -6,8 +6,8 @@ const addProduct = async (req, res) => {
     const addProduct = await new AddProduct({
         userId: req.body.userId,
         name: req.body.name,
-        price: req.body.price,
-        quantity: req.body.quantity,
+        // price: req.body.price,
+        // quantity: req.body.quantity,
         manufacturer: req.body.manufacturer,
         description: req.body.description,
     })
@@ -35,13 +35,13 @@ const productDelete = async (req, res) => {
 const productUpdate = async (req, res) => {
   console.log("Resquest Body", req.body);
   console.log("Resquest Params", req.params.id);
-  const {id} = req.params;
-  const body = req.body;
-  const updatedData = {_id:req.params.id,userId: req.body.userId, name: req.body.name, price: req.body.price, quantity: req.body.quantity, manufacturer: req.body.manufacturer, description: req.body.description  }
+  // const {id} = req.params;
+  // const body = req.body;
+  // const updatedData = {_id:req.params.id,userId: req.body.userId, name: req.body.name, price: req.body.price, quantity: req.body.quantity, manufacturer: req.body.manufacturer, description: req.body.description  }
   const request = await AddProduct.findByIdAndUpdate(id, updatedData, { returnDocument: 'after', new: true });
-  // const newData = await request.save();
+  const newData = await request.save();
   console.log("update request", request);
   res.json(request);
 };
 
-module.exports = {addProduct, getAllProduct, productDelete, productUpdate};
+module.exports = {addProduct, getAllProduct, productDelete};

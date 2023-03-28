@@ -9,8 +9,8 @@ export default function AddProduct() {
   const [product, setProduct] = useState({
     userId: authContext.user,
     name: "",
-    price: "",
-    quantity: "",
+    // price: "",
+    // quantity: "",
     manufacturer: "",
     description: "",
   });
@@ -108,7 +108,7 @@ export default function AddProduct() {
                            />
                           </div>
 
-                          <div>
+                          {/* <div>
                             <label
                               class="text-md font-medium text-gray-700 dark:text-gray-900"
                               for="price"
@@ -125,9 +125,9 @@ export default function AddProduct() {
                                 updateProduct(e.target.name, e.target.value)
                               }
                             />
-                          </div>
+                          </div> */}
 
-                          <div>
+                          {/* <div>
                             <label
                               class="text-md font-medium text-gray-700 dark:text-gray-900"
                               for="quantity"
@@ -144,7 +144,7 @@ export default function AddProduct() {
                                 updateProduct(e.target.name, e.target.value)
                               }
                            />
-                          </div>
+                          </div> */}
 
                           <div>
                             <label

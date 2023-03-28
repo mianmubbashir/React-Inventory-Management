@@ -4,18 +4,23 @@ const Sale = require("../models/Sale");
 const addSale = async (req, res) => {
     const addSale = await new Sale({
         userId: req.body.userId,
-        name: req.body.name,
-        price: req.body.price,
+        productId: req.body.productId,
+        storeId: req.body.storeId,
         quantity: req.body.quantity,
-        manufacturer: req.body.manufacturer,
-        description: req.body.description,
+        date: req.body.date,
+        amount: req.body.amount,
     })
     addSale.save().then((result)=>{
         res.json(result)
       }).catch((error)=>{
          console.log(error)
       })
-
 };
 
-module.exports = {addSale};
+//Get Sale
+const getAllSale = async (req, res) => {
+    const findAllSale = await Sale.find().sort({ '_id': -1 });
+    res.json(findAllSale);
+  };
+
+module.exports = {addSale ,getAllSale};

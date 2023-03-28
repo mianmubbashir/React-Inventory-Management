@@ -4,9 +4,8 @@ const Store = require("../models/Store");
 const addStore = async (req, res) => {
     const addStore = await new Store({
         name: req.body.name,
-        brand: req.body.brand,
-        price: req.body.price,
-        category: req.body.category,
+        city: req.body.city,
+        location: req.body.location,
     })
     addStore.save().then((result)=>{
         res.json(result)
@@ -16,4 +15,10 @@ const addStore = async (req, res) => {
 
 };
 
-module.exports = {addStore};
+//Get Store Details
+const getAllStore = async (req, res) => {
+    const findAllStore = await Store.find().sort({ '_id': -1 });
+    res.json(findAllStore);
+  };
+
+module.exports = {addStore, getAllStore};
