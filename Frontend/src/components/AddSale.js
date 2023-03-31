@@ -1,9 +1,12 @@
-import { Fragment, useCallback, useContext, useRef, useState } from "react";
+import { Fragment, useCallback, useContext, useRef, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import axios from 'axios';
 import AuthContext from "../AuthContext";
 
 export default function AddSale() {
   const authContext =useContext(AuthContext)
+  const [product, setProduct] = useState([]);
+  const [store, setStore] = useState([]);
   const [sale, setSale] = useState({
     userId: authContext.user,
     productId: "",
@@ -12,16 +15,37 @@ export default function AddSale() {
     date: "",
     amount: "",
   });
-  console.log("Sale: ", sale);
+  // console.log("Sale: ", sale);
   const [open, setOpen] = useState(true);
   const cancelButtonRef = useRef(null);
 
+  useEffect(() => {
+    fetchProducts();
+    fetchStores();
+  }, []);
 
 
-  const updateSale = (key, value) => {
-    console.log(key);
-    setSale({ ...sale, [key]: value });
+
+  const fetchProducts = async () => {
+    try {
+      const res = await axios.get("http://localhost:4000/api/Product/get");
+      setProduct(res.data);
+    } catch (error) {
+      console.log("PRODUCTS: ERROR", error);
+    }
   };
+
+ 
+
+  const fetchStores = async () => {
+    try {
+      const res = await axios.get("http://localhost:4000/api/Store/get");
+      setStore(res.data);
+    } catch (error) {
+      console.log("STORE: ERROR", error);
+    }
+  };
+
 
   const addSale = () => {
     fetch("http://localhost:4000/api/Sale/add", {
@@ -82,42 +106,50 @@ export default function AddSale() {
 
                       <form>
                         <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-                          <div>
+                        <div>
                             <label
-                              class="text-md font-medium text-gray-700 dark:text-gray-900"
-                              htmlFor="username"
+                              for="category"
+                              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                             >
-                              Product Id
+                              Product Name
                             </label>
-                            <input
-                              type="text"
-                              name="product id"
-                              id="product id"
-                              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-400 dark:text-gray-00 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                              value={sale.productId}
+                            <select
+                              id="category"
+                              class="block p-2.5 w-full text-sm text-black-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-200 dark:border-gray-900 dark:placeholder-black-900 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500"
                               onChange={(e) =>
-                                updateSale(e.target.name, e.target.value)
+                                setSale({...sale, productId: e.target.value})
                               }
-                            />
+                            >
+                              <option>Select Product</option>
+                              {product.map((element, ind) => {
+                                return (
+                                  <option value={element.name}>{element.name}</option>
+                                )
+                              })}
+                            </select>
                           </div>
 
                           <div>
                             <label
-                              class="text-md font-medium text-gray-700 dark:text-gray-900"
-                              htmlFor="Store Id"
+                              for="category"
+                              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                             >
-                              Store Id
+                              Store Name
                             </label>
-                            <input
-                              type="text"
-                              name="store id"
-                              id="store id"
-                              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-400 dark:text-gray-900 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                              value={sale.storeId}
+                            <select
+                              id="category"
+                              class="block p-2.5 w-full text-sm text-black-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-200 dark:border-gray-900 dark:placeholder-black-900 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500"
                               onChange={(e) =>
-                                updateSale(e.target.name, e.target.value)
+                                setSale({...sale, storeId: e.target.value})
                               }
-                            />
+                            >
+                              <option>Select Store</option>
+                              {store.map((element,index) => {
+                                return (
+                                  <option value={element.name}>{element.name}</option>
+                                )
+                              })}
+                            </select>
                           </div>
 
                           <div>
@@ -131,10 +163,10 @@ export default function AddSale() {
                               type="number"
                               name="quantity"
                               id="quantity"
-                              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-400 dark:text-gray-900 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-200 dark:text-gray-900 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                               value={sale.quantity}
                               onChange={(e) =>
-                                updateSale(e.target.name, e.target.value)
+                                setSale({...sale, quantity: e.target.value})
                               }
                             />
                           </div>
@@ -150,10 +182,10 @@ export default function AddSale() {
                               type="date"
                               name="date"
                               id="date"
-                              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-400 dark:text-gray-900 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-200 dark:text-gray-900 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                               value={sale.date}
                               onChange={(e) =>
-                                updateSale(e.target.name, e.target.value)
+                                setSale({...sale, date: e.target.value})
                               }
                             />
                           </div>
@@ -169,10 +201,10 @@ export default function AddSale() {
                               type="number"
                               name="amount"
                               id="amount"
-                              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-400 dark:text-gray-900 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-200 dark:text-gray-900 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                               value={sale.amount}
                               onChange={(e) =>
-                                updateSale(e.target.name, e.target.value)
+                                setSale({...sale, amount: e.target.value})
                               }
                             />
                           </div>

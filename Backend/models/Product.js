@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
 
 const AddProductSchema = new mongoose.Schema({
+    ProductID: String,
     userId: String,
     name: String,
-    // price: Number,
-    // quantity: Number,
     manufacturer: String,
     description: String,
 },

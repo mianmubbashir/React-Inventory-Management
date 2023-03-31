@@ -4,19 +4,17 @@ import StoreLocation from "./StoreLocation";
 import axios from "axios";
 
 function ManageStore() {
-  const [showAddStore, setShowAddStore] = useState(false);
+  const [showAddStore, setShowAddStore] = useState(false); //store modal
   const [store, setStore] = useState([]);
-  console.log(store)
+  // console.log(store)
 
   const showStore = () => {
     setShowAddStore(!showAddStore);
   };
 
-
   useEffect(() => {
     fetchStores();
   },[]);
-
 
   const fetchStores = async () => {
     try {
@@ -29,8 +27,8 @@ function ManageStore() {
 
   return (
     <div>
-      <div className="xl:w-full w-11/12 mx-auto  my-6 md:w-2/3 sm:px-10 py-4 rounded-md gap-4">
-        <div className="flex justify-between ">
+      <div className="xl:w-full w-11/12 mx-auto  my-6 md:w-2/3 sm:px-1 py-4 rounded-md gap-4">
+        <div className="flex justify-between">
           <div className="text-lg text-gray-900 dark:text-gray-900 font-bold ">
             Store's Location
           </div>
@@ -49,7 +47,7 @@ function ManageStore() {
 
 
         <div className="flex flex-col gap-6">
-          {store.map((element, index) => {
+          {store.map((element) => {
             return (
               <>
                 <div className="flex bg-gray-700 rounded-md relative">

@@ -7,8 +7,7 @@ import Layout from "./components/Layout";
 import Dashboard from "./components/Dashboard";
 import Inventory from "./components/Inventory";
 import Sales from "./components/Sales";
-// import Reports from "./components/Reports";
-// import Orders from "./components/Orders";
+import Purchase from "./components/Purchase";
 import ManageStore from "./components/ManageStore";
 import AuthContext from "./AuthContext";
 import ProtectedRoutes from "./ProtectedRoutes";
@@ -20,13 +19,13 @@ function App() {
 
 
   let currentUser = JSON.parse(localStorage.getItem("user"));
-  console.log("USER: ",user)
+  // console.log("USER: ",user)
 
   useEffect(()=>{
     if(currentUser){
       setUser(currentUser._id)
       setLoader(false)
-      console.log("inside effect", currentUser)
+      // console.log("inside effect", currentUser)
     }
     else{
       setUser("");
@@ -34,11 +33,13 @@ function App() {
     }
   },[currentUser])
 
+  
   const signin = (newUser, callback) => {
     setUser(newUser);
     callback();
 
   }
+
 
   const signout = () => {
     setUser(null);
@@ -46,7 +47,7 @@ function App() {
   }
 
   let value = { user, signin, signout };
-  console.log("value",value)
+  // console.log("value",value)
 
 
 
@@ -73,8 +74,7 @@ function App() {
           <Route index element={<Dashboard />} />
           <Route path='/inventory' element={<Inventory />} />
           <Route path="/sales" element={<Sales />} />
-          {/* <Route path="/reports" element={<Reports />} /> */}
-          {/* <Route path="/orders" element={<Orders />} /> */}
+          <Route path="/Purchase" element={<Purchase />} />
           <Route path="/managestore" element={<ManageStore />} />
         </Route>
       </Routes>

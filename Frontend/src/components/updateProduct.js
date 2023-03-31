@@ -2,53 +2,40 @@ import { Fragment, useContext, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import axios from "axios";
 import AuthContext from "../AuthContext";
-// import { ToastContainer,toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
 
-export default function UpdateProduct(element) {
-  console.log("Update ELement", element);
+export default function UpdateProduct({ element }) {
+  // console.log("Update ELement::::::>>>", element);
   const authContext = useContext(AuthContext);
   const [product, setProduct] = useState({
+    productID: element._id,
     userId: authContext.user,
-    name: element.element.name,
-    price: element.element.price,
-    quantity: element.element.quantity,
-    manufacturer: element.element.manufacturer,
-    description: element.element.description,
+    name: element.name,
+    manufacturer: element.manufacturer,
+    description: element.description,
   });
-  console.log("Product: ", product);
+  // console.log("Product/////////: ", product);
   const [open, setOpen] = useState(true);
   const cancelButtonRef = useRef(null);
 
-  // const notifyAdded = () => toast.success("Sucessfully Added...", { position: toast.POSITION.TOP_CENTER });
-
-  // const updateProduct = (key, value) => {
-  //   console.log(key);
-  //   setProduct({ ...product, [key]: value });
-  // };
 
   // Update Product
-const updateProduct = async (id) => {
-	console.log("Update Data", product)
-  const x = window.confirm("Are you sure?");
-  console.log(x);
-  // notifyWarn()
-  if (!x) return null;
-  try {
-    const res = await axios.put(`http://localhost:4000/api/Product/update/${id}`, {
-		method: "PUT",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(product),
-		});
-    const result = res;
-    console.log("Products****:", result);
-  } catch (error) {
-    console.log("Products****: ERROR", error);
-    alert(error);
-  }
-};
+  const updateProduct = async (id) => {
+    // console.log("Update Data", product);
+    const x = window.confirm("Are you sure?");
+    console.log(x);
+    if (!x) return null;
+    try {
+      const res = await axios.put(
+        `http://localhost:4000/api/Product/update/${id}`,
+        product
+      );
+      const result = res;
+      console.log("Products****:", result);
+    } catch (error) {
+      console.log("Products****: ERROR", error);
+      alert(error);
+    }
+  };
 
   return (
     <>
@@ -106,48 +93,13 @@ const updateProduct = async (id) => {
                                 type="text"
                                 name="name"
                                 id="name"
-                                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-400 dark:text-gray-00 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-																value={product.name}
+                                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md bg-gray-200 dark:text-gray-00 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                                value={product.name}
                                 onChange={(e) =>
-                                  setProduct({...product, name: e.target.value})
-                                }
-                              />
-                            </div>
-
-                            <div>
-                              <label
-                                class="text-md font-medium text-gray-700 dark:text-gray-900"
-                                for="price"
-                              >
-                                Buying Price
-                              </label>
-                              <input
-                                type="number"
-                                name="price"
-                                id="price"
-                                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-400 dark:text-gray-900 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                                value={product.price}
-                                onChange={(e) =>
-                                  setProduct({...product, price: e.target.value})
-                                }
-                              />
-                            </div>
-
-                            <div>
-                              <label
-                                class="text-md font-medium text-gray-700 dark:text-gray-900"
-                                for="quantity"
-                              >
-                                Quantity
-                              </label>
-                              <input
-                                type="number"
-                                name="quantity"
-                                id="quantity"
-                                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-400 dark:text-gray-900 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                                value={product.quantity}
-                                onChange={(e) =>
-                                  setProduct({...product, quantity: e.target.value})
+                                  setProduct({
+                                    ...product,
+                                    name: e.target.value,
+                                  })
                                 }
                               />
                             </div>
@@ -163,10 +115,13 @@ const updateProduct = async (id) => {
                                 type="text"
                                 name="manufacturer"
                                 id="manufacturer"
-                                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-400 dark:text-gray-900 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-200 dark:text-gray-900 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                                 value={product.manufacturer}
                                 onChange={(e) =>
-                                  setProduct({...product, manufacturer: e.target.value})
+                                  setProduct({
+                                    ...product,
+                                    manufacturer: e.target.value,
+                                  })
                                 }
                               />
                             </div>
@@ -182,11 +137,14 @@ const updateProduct = async (id) => {
                                 id="description"
                                 rows="5"
                                 name="description"
-                                class="block p-2.5 w-full text-sm text-black-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-400 dark:border-gray-900 dark:placeholder-black-900 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                class="block p-2.5 w-full text-sm text-black-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-200 dark:border-gray-900 dark:placeholder-black-900 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                 placeholder="Write a description..."
                                 value={product.description}
                                 onChange={(e) =>
-                                  setProduct({...product, description: e.target.value})
+                                  setProduct({
+                                    ...product,
+                                    description: e.target.value,
+                                  })
                                 }
                               >
                                 {/* Standard glass, 3.8GHz 8-core 10th-generation
@@ -195,6 +153,35 @@ const updateProduct = async (id) => {
                               8GB of GDDR6 memory, 256GB SSD storage, Gigabit
                               Ethernet, Magic Mouse 2, Magic Keyboard - US */}
                               </textarea>
+                            </div>
+
+                            <div>
+                              <label
+                                for="category"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                              >
+                                Category
+                              </label>
+                              <select
+                                id="category"
+                                class="block p-2.5 w-full text-sm text-black-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-200 dark:border-gray-900 dark:placeholder-black-900 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                onChange={(e) =>
+                                  setProduct({
+                                    ...product,
+                                    category: e.target.value,
+                                  })
+                                }
+                              >
+                                <option selected="" value="Electronics">
+                                  Electronics
+                                </option>
+                                <option value="TV">TV/Monitors</option>
+                                <option value="PC">PC</option>
+                                <option value="Gaming Console">
+                                  Gaming/Console
+                                </option>
+                                <option value="Phones">Phones</option>
+                              </select>
                             </div>
                           </div>
                         </form>
@@ -206,7 +193,7 @@ const updateProduct = async (id) => {
                     <button
                       type="button"
                       className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto"
-                      onClick={() => updateProduct(element.element._id)}
+                      onClick={() => updateProduct(element._id)}
                     >
                       Update Product
                     </button>
@@ -225,7 +212,6 @@ const updateProduct = async (id) => {
           </div>
         </Dialog>
       </Transition.Root>
-      {/* <ToastContainer /> */}
     </>
   );
 }
