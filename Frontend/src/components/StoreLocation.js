@@ -1,7 +1,7 @@
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
-export default function StoreLocation() {
+export default function StoreLocation({handlePageUpdate}) {
   const [store, setStore] = useState({
     name: "",
     city: "",
@@ -22,6 +22,7 @@ export default function StoreLocation() {
     })
       .then((result) => {
         alert("STORE LOCATION ADDED");
+        handlePageUpdate();
         setOpen(false);
       })
       .catch((err) => console.log(err));

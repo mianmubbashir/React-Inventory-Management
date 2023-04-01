@@ -6,12 +6,21 @@ import axios from "axios";
 
 function Inventory() {
   const [product, setProduct] = useState([]);
-  console.log("GET PRODUCT////////", product)
+  // console.log("GET PRODUCT////////", product)
 
-  const [showAddProduct, setShowAddProduct] = useState(false);  //product modal
-  const [showUpdateProduct, setShowUpdateProduct] = useState(false); //update modal
+  //page update
+  const [pageUpdate, setPageUpdate] = useState(); 
+
   
-  const [updatedProduct, setUpdatedProduct] = useState(null); //one time render
+//product modal
+  const [showAddProduct, setShowAddProduct] = useState(false); 
+  //update modal
+  const [showUpdateProduct, setShowUpdateProduct] = useState(false); 
+
+
+  //one time modal render for update button
+  const [updatedProduct, setUpdatedProduct] = useState(null); 
+
   const handleUpdateClick = (element) => {
     setUpdatedProduct(element);
     updateProductModal();
@@ -24,7 +33,7 @@ function Inventory() {
 
 
 
-
+  
   const showProduct = () => {
     setShowAddProduct(!showAddProduct);
   };
@@ -32,9 +41,8 @@ function Inventory() {
   
 
   useEffect(() => {
-    console.log("useefeeect")
     fetchProducts();
-  },[]);
+  },[pageUpdate]);
 
 
   const fetchProducts = async () => {
@@ -54,17 +62,20 @@ function Inventory() {
     console.log(x);
     if (!x) return null;
     try {
-      const res = await axios.delete(
-        `http://localhost:4000/api/Product/delete/${id}`
-      );
-
+      const res = await axios.delete(`http://localhost:4000/api/Product/delete/${id}`);
       fetchProducts();
       console.log("Products****:", res);
     } catch (error) {
-      // console.log("Products****: ERROR", error);
       alert(error.response.data);
     }
   };
+
+
+
+
+  const handlePageUpdate = () =>{
+    setPageUpdate(!pageUpdate)
+  }
 
 
   return (
@@ -144,7 +155,7 @@ function Inventory() {
               >
                 Add Product
               </button>
-              {showAddProduct && <AddProduct />}
+              {showAddProduct && <AddProduct handlePageUpdate = {handlePageUpdate}/>}
             </div>
           </div>
     

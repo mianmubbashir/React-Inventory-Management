@@ -4,17 +4,24 @@ import StoreLocation from "./StoreLocation";
 import axios from "axios";
 
 function ManageStore() {
-  const [showAddStore, setShowAddStore] = useState(false); //store modal
   const [store, setStore] = useState([]);
   // console.log(store)
-
+  const [showAddStore, setShowAddStore] = useState(false); //store modal
   const showStore = () => {
     setShowAddStore(!showAddStore);
   };
 
+
+  const [pageUpdate, setPageUpdate] = useState(); 
+  const handlePageUpdate = () =>{
+    setPageUpdate(!pageUpdate)
+  }
+
+  
+
   useEffect(() => {
     fetchStores();
-  },[]);
+  },[pageUpdate]);
 
   const fetchStores = async () => {
     try {
@@ -24,6 +31,7 @@ function ManageStore() {
       console.log("STORE: ERROR", error);
     }
   };
+
 
   return (
     <div>
@@ -41,7 +49,7 @@ function ManageStore() {
             >
               Add Store Location
             </button>
-            {showAddStore && <StoreLocation />}
+            {showAddStore && <StoreLocation handlePageUpdate={handlePageUpdate}/>}
           </div>
         </div>
 

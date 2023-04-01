@@ -1,9 +1,9 @@
-import { Fragment, useCallback, useContext, useRef, useState, useEffect } from "react";
+import { Fragment, useContext, useRef, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import axios from 'axios';
 import AuthContext from "../AuthContext";
 
-export default function AddSale() {
+export default function AddSale({handlePageUpdate}) {
   const authContext =useContext(AuthContext)
   const [product, setProduct] = useState([]);
   const [store, setStore] = useState([]);
@@ -57,6 +57,7 @@ export default function AddSale() {
     })
       .then((result) => {
         alert("SALE DETAILS ADDED");
+        handlePageUpdate();
         setOpen(false);
       })
       .catch((err) => console.log(err));
@@ -121,7 +122,7 @@ export default function AddSale() {
                               }
                             >
                               <option>Select Product</option>
-                              {product.map((element, ind) => {
+                              {product.map((element) => {
                                 return (
                                   <option value={element.name}>{element.name}</option>
                                 )
@@ -144,7 +145,7 @@ export default function AddSale() {
                               }
                             >
                               <option>Select Store</option>
-                              {store.map((element,index) => {
+                              {store.map((element) => {
                                 return (
                                   <option value={element.name}>{element.name}</option>
                                 )

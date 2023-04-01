@@ -2,7 +2,7 @@ import { Fragment, useContext, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import AuthContext from "../AuthContext";
 
-export default function AddProduct() {
+export default function AddProduct({handlePageUpdate}) {
   const authContext = useContext(AuthContext);
   const [product, setProduct] = useState({
     userId: authContext.user,
@@ -11,7 +11,8 @@ export default function AddProduct() {
     description: "",
   });
   // console.log("Product: ", product);
-  const [open, setOpen] = useState(true);
+
+  const [open, setOpen] = useState(true); 
   const cancelButtonRef = useRef(null);
 
 
@@ -26,11 +27,16 @@ export default function AddProduct() {
     })
       .then((result) => {
         alert("Product ADDED", result);
+        handlePageUpdate();
         setOpen(false);
       })
       .catch((err) => console.log(err));
   };
+  
 
+
+
+  
   return (
     <>
       <Transition.Root show={open} as={Fragment}>
@@ -89,10 +95,7 @@ export default function AddProduct() {
                                 id="name"
                                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-200 dark:text-gray-00 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                                 onChange={(e) =>
-                                  setProduct({
-                                    ...product,
-                                    name: e.target.value,
-                                  })
+                                  setProduct({ ...product, name: e.target.value,})
                                 }
                               />
                             </div>
@@ -109,11 +112,7 @@ export default function AddProduct() {
                                 name="manufacturer"
                                 id="manufacturer"
                                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-200 dark:text-gray-900 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                                onChange={(e) =>
-                                  setProduct({
-                                    ...product,
-                                    manufacturer: e.target.value,
-                                  })
+                                onChange={(e) => setProduct({...product, manufacturer: e.target.value})
                                 }
                               />
                             </div>
@@ -132,9 +131,7 @@ export default function AddProduct() {
                                 className="block p-2.5 w-full text-sm text-black-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-200 dark:border-gray-900 dark:placeholder-black-900 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                 placeholder="Write a description..."
                                 onChange={(e) =>
-                                  setProduct({
-                                    ...product,
-                                    description: e.target.value,
+                                  setProduct({ ...product, description: e.target.value,
                                   })
                                 }
                               ></textarea>
@@ -156,8 +153,8 @@ export default function AddProduct() {
                     <button
                       type="button"
                       className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                      onClick={() => setOpen(false)}
                       ref={cancelButtonRef}
+                      onClick={() => setOpen(false)}
                     >
                       Cancel
                     </button>

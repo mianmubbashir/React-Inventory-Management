@@ -6,27 +6,24 @@ import axios from "axios";
 
 function Sales() {
   const [sale, setSale] = useState([]);
-  const [product, setProduct] = useState([]);
   // console.log('sale ////',sale)
   const [showAddSale, setShowAddSale] = useState(false);
+//page update
+  const [pageUpdate, setPageUpdate] = useState()
 
   const showSale = () => {
     setShowAddSale(!showAddSale);
   };
 
+const handlePageUpdate = () =>{
+  setPageUpdate(!pageUpdate)
+}
+
+
   useEffect(() => {
     fetchSales();
-    fetchProducts();
-  }, []);
+  }, [pageUpdate]);
 
-  const fetchProducts = async () => {
-    try {
-      const res = await axios.get("http://localhost:4000/api/Product/get");
-      setProduct(res.data);
-    } catch (error) {
-      console.log("PRODUCTS: ERROR", error);
-    }
-  };
 
   const fetchSales = async () => {
     try {
@@ -54,7 +51,7 @@ function Sales() {
               >
                 Add Sales Details
               </button>
-              {showAddSale && <AddSale />}
+              {showAddSale && <AddSale  handlePageUpdate={handlePageUpdate}/>}
             </div>
           </div>
 

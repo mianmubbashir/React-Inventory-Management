@@ -4,7 +4,7 @@ import AuthContext from "../AuthContext";
 
 function Sidebar() {
   const authContext = useContext(AuthContext);
-  console.log("AUTHCONTEXT: ", authContext);
+  // console.log("AUTHCONTEXT: ", authContext);
 
   const logoutUser = () => {
     authContext.signout();
@@ -22,7 +22,6 @@ function Sidebar() {
                 alt="Your Company"
               />
               <span class="text-sm font-medium">
-                {" "}
                 <Link to="/">Dashboard</Link>
               </span>
             </div>
@@ -36,7 +35,6 @@ function Sidebar() {
                 alt="Your Company"
               />
               <span class="text-sm font-medium">
-                {" "}
                 <Link to="/Inventory">Inventory</Link>
               </span>
             </div>
@@ -50,7 +48,6 @@ function Sidebar() {
                 alt="Your Company"
               />
               <span class="text-sm font-medium">
-                {" "}
                 <Link to="/Sales">Sales</Link>
               </span>
             </div>
@@ -63,8 +60,7 @@ function Sidebar() {
                 src={require("../assets/inventory.png")}
                 alt="Your Company"
               />
-              <span class="text-sm font-medium">
-                {" "}
+              <span class="text-sm font-medium ">
                 <Link to="/Purchase">Purchase</Link>
               </span>
             </div>
@@ -78,7 +74,7 @@ function Sidebar() {
                 alt="Your Company"
               />
               <span class="text-sm font-medium">
-                <Link to="/managestore">Manage Store</Link>{" "}
+                <Link to="/managestore">Manage Store</Link>
               </span>
             </div>
           </summary>
@@ -105,7 +101,7 @@ function Sidebar() {
               </svg>
 
               <span class="text-sm font-medium" onClick={logoutUser}>
-                Logout{" "}
+                Logout
               </span>
             </div>
 

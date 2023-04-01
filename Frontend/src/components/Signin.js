@@ -1,16 +1,18 @@
 import { LockClosedIcon } from "@heroicons/react/20/solid";
+import { Link } from "react-router-dom";
 import AuthContext from "../AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 
 export default function Signin() {
-  const [text, setText] = useState({
+  const [login, setLogin] = useState({
     email: "",
     password: "",
   });
 
   const authcontext = useContext(AuthContext);
   const navigate = useNavigate();
+
 
   const authCheck = () => {
     setTimeout(() => {
@@ -28,17 +30,14 @@ export default function Signin() {
     }, 3000);
   };
 
-  const loginUser = (e) => {
-    // Cannot send empty data
-    if (text.email === "" || text.password === "") {
-      alert("To login user, enter details to proceed...");
-    } else {
+
+  const loginUser = () => {
       fetch("http://localhost:4000/api/signin", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify(text),
+        body: JSON.stringify(login),
       })
         .then((result) => {
           console.log("User login", result);
@@ -46,10 +45,11 @@ export default function Signin() {
         .catch((error) => {
           console.log("Something went wrong ", error);
         });
-    }
-    authCheck();
-    console.log("Auth: ", authcontext);
+        authCheck();
+    //  console.log("Auth: ", authcontext);
   };
+
+
 
   return (
     <>
@@ -85,9 +85,9 @@ export default function Signin() {
                   required
                   className="relative block w-full rounded-t-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
                   placeholder="Email address"
-                  value={text.email}
+                  value={login.email}
                   onChange={(e) => {
-                    setText({ ...text, email: e.target.value });
+                    setLogin({ ...login, email: e.target.value });
                   }}
                 />
               </div>
@@ -103,9 +103,9 @@ export default function Signin() {
                   required
                   className="relative block w-full rounded-b-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
                   placeholder="Password"
-                  value={text.password}
+                  value={login.password}
                   onChange={(e) => {
-                    setText({ ...text, password: e.target.value });
+                    setLogin({ ...login, password: e.target.value });
                   }}
                 />
               </div>
@@ -117,7 +117,7 @@ export default function Signin() {
                   href="#"
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
-                  Forgot your password? &nbsp;Signup
+                  Forgot your password? &nbsp;<Link to="/signup">Signup</Link>
                 </a>
               </div>
             </div>

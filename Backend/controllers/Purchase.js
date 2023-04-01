@@ -2,7 +2,6 @@ const AddPurchase = require("../models/Purchase");
 
 // Add Purchase Details
 const addPurchase = async (req, res) => {
-    console.log("hello world",req.body)
     const addPurchase = await new AddPurchase({
         productId: req.body.productId,
         quantity: req.body.quantity,

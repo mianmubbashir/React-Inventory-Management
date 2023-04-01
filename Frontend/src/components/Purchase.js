@@ -4,18 +4,23 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function Purchase() {
-  const [showAddPurchase, setShowAddPurchase] = useState(false); //purchase modal
   const [purchase, setPurchase] = useState([]);
   // console.log("Purchase", purchase)
+  const [showPurchaseModal, setShowPurchaseModal] = useState(false);
+//update page
+const [pageUpdate, setPageUpdate] = useState()
 
   const showPurchase = () => {
-    setShowAddPurchase(!showAddPurchase);
+    setShowPurchaseModal(!showPurchaseModal);
   };
 
+  const handleUpdatePage = () =>{
+    setPageUpdate(!pageUpdate)
+  }
 
   useEffect(() => {
     fetchPurchase();
-  }, []);
+  }, [pageUpdate]);
 
   const fetchPurchase = async () => {
     try {
@@ -33,70 +38,10 @@ function Purchase() {
   return (
     <div>
       <div className="flex justify-center bg-slate-20 flex-col gap-6 h-fit">
-        <div className="">
-          <div class="overflow-x-auto">
-            <table class="min-w-full text-sm mt-10">
-              <thead>
-                <tr>
-                  <th class="whitespace-nowrap px-4 py-6 text-left mt-7 text-lg font-bold leading-6 text-gray-900 ml-2 ">
-                    Overall Inventory
-                  </th>
-                </tr>
-              </thead>
 
-              <tbody class="">
-                <tr>
-                  <td class="whitespace-nowrap px-4 py-2 font-medium text-blue-900">
-                    Total Order{" "}
-                  </td>
-                  <td class="whitespace-nowrap px-4 py-2 font-medium text-yellow-700">
-                    Total Products
-                  </td>
-                  <td class="whitespace-nowrap px-4 py-2 font-medium text-purple-700">
-                    Total Return
-                  </td>
-                  <td class="whitespace-nowrap px-4 py-2 font-medium text-red-700">
-                    On the way
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="whitespace-nowrap px-4 py-2 text-gray-900">
-                    {" "}
-                    14{" "}
-                  </td>
-                  <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                    868 25000
-                  </td>
-                  <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                    5 2500
-                  </td>
-                  <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                    12 2
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="whitespace-nowrap px-4 py-2 text-gray-400">
-                    last 7 days
-                  </td>
-                  <td class="whitespace-nowrap px-4 py-2 text-gray-400">
-                    last 7 days Revenue
-                  </td>
-                  <td class="whitespace-nowrap px-4 py-2 text-gray-400">
-                    last 7 days cost
-                  </td>
-                  <td class="whitespace-nowrap px-4 py-2 text-gray-400">
-                    ordered cost
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
 
         <div>
-          <div class="py-20">
+          <div class="py-6">
             <div className="flex justify-between ">
               <div class="mt-7 text-lg font-bold leading-6 text-gray-900 ml-2 ">
                 Purchase Details
@@ -110,7 +55,7 @@ function Purchase() {
                 >
                   Add Details
                 </button>
-                {showAddPurchase && <AddPurchase />}
+                {showPurchaseModal && <AddPurchase  handleUpdatePage={handleUpdatePage}/>}
               </div>
             </div>
 
@@ -133,7 +78,7 @@ function Purchase() {
               </thead>
 
               <tbody class="divide-y divide-gray-200">
-              {purchase.map((element, index) => {
+              {purchase.map((element) => {
                 return (
                   <tr >
                   <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">

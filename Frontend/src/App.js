@@ -25,7 +25,7 @@ function App() {
     if(currentUser){
       setUser(currentUser._id)
       setLoader(false)
-      // console.log("inside effect", currentUser)
+      // console.log(currentUser)
     }
     else{
       setUser("");
@@ -33,13 +33,14 @@ function App() {
     }
   },[currentUser])
 
-  
+
+
+
   const signin = (newUser, callback) => {
     setUser(newUser);
     callback();
 
   }
-
 
   const signout = () => {
     setUser(null);

@@ -23,7 +23,7 @@ app.use("/api/Sale", saleRoute);
 
 
 
-// ------------- Signin -------------- 
+// SIGNIN USER
 let userAuthCheck;
 app.post("/api/signin", async (req, res) => {
     console.log(req.body)
@@ -50,16 +50,18 @@ app.post("/api/signin", async (req, res) => {
 });
 
 
+
+
+
 //Getting User Details of login user 
 app.get("/api/signin", (req, res) => {
-
     res.send(userAuthCheck);
-
 });
-// ------------------------------------
 
 
-// ----------- Signup ------------------
+
+
+// SIGNUP USER
 app.post("/api/signup", async (req, res) => {
     console.log(req.body);
 
@@ -73,6 +75,7 @@ app.post("/api/signup", async (req, res) => {
 
     res.json(newUser);
 });
+
 
 
 

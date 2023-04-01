@@ -3,7 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import AuthContext from "../AuthContext";
 import axios from "axios";
 
-export default function AddPurchase() {
+export default function AddPurchase({handleUpdatePage}) {
   const authContext = useContext(AuthContext);
   const [product, setProduct] = useState([]);
   const [purchase, setPurchase] = useState({
@@ -37,7 +37,6 @@ export default function AddPurchase() {
 
 
 
-
   const addPurchase = () => {
     fetch("http://localhost:4000/api/Purchase/add", {
       method: "POST",
@@ -48,6 +47,7 @@ export default function AddPurchase() {
     })
       .then((result) => {
         alert("Product ADDED", result);
+        handleUpdatePage();
         setOpen(false);
       })
       .catch((err) => console.log(err));

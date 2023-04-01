@@ -1,4 +1,5 @@
 import { LockClosedIcon } from "@heroicons/react/20/solid";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -11,31 +12,28 @@ export default function Signup() {
 
   const navigate = useNavigate();
 
-  const registerUser = (e) => {
-    // Cannot send empty data
-    if (
-      userDetails.username === "" ||
-      userDetails.email === "" ||
-      userDetails.password === ""
-    ) {
-      alert("To register user, fill details please!");
-    } else {
-      fetch("http://localhost:4000/api/signup", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(userDetails),
+
+  const registerUser = () => {
+    fetch("http://localhost:4000/api/signup", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(userDetails),
+    })
+      .then((result) => {
+        alert("Successfully Signup");
+        navigate("/signin");
       })
-        .then((result) => {
-          alert("Successfully Signup");
-          navigate("/signin");
-        })
-        .catch((error) => {
-          console.log("Something went wrong ", error);
-        });
+      .catch((error) => {
+        console.log("Something went wrong ", error);
+      });
     }
-  };
+
+
+
+
+
   return (
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 h-screen items-center place-items-center ">
@@ -72,6 +70,7 @@ export default function Signup() {
                       username: e.target.value,
                     });
                   }}
+
                 />
               </div>
               <div>
@@ -121,7 +120,7 @@ export default function Signup() {
                   href="#"
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
-                  Already have an account? Login
+                  Already have an account? &nbsp;<Link to="/signin">Signin</Link>
                 </a>
               </div>
             </div>

@@ -7,12 +7,10 @@ const Layout = () => {
     <>
       <div>
         <Header />
-
         <div className="grid grid-cols-12 ">
           <div className="grid col-span-2 ">
             <Sidebar />
           </div>
-
           <div className="grid grid-flow-col col-span-10 ">
             <Outlet />
           </div>

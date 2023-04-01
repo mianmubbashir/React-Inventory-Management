@@ -32,7 +32,6 @@ const productDelete = async (req, res) => {
 //Update Product
 const productUpdate = async (req, res) => {
   const request = await AddProduct.findByIdAndUpdate({ _id: req.params.id}, { name: req.body.name, manufacturer: req.body.manufacturer, description: req.body.description }, { new: true });
-  console.log("update request", request);
   res.json(request);
 };
 
