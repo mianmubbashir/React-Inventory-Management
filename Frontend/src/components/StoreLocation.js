@@ -71,10 +71,10 @@ export default function StoreLocation({handlePageUpdate}) {
                       </Dialog.Title>
 
                       <form>
-                        <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                        <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                           <div>
                             <label
-                              class="text-md font-medium text-gray-700 dark:text-gray-900"
+                              className="text-md font-medium text-gray-700 dark:text-gray-900"
                               htmlfor="name"
                             >
                               Store Name
@@ -83,7 +83,7 @@ export default function StoreLocation({handlePageUpdate}) {
                               type="text"
                               name="name"
                               id="name"
-                              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-200 dark:text-gray-00 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-200 dark:text-gray-00 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                               onChange={(e) =>
                                 setStore({...store, name: e.target.value})
                               }
@@ -101,17 +101,17 @@ export default function StoreLocation({handlePageUpdate}) {
                               type="text"
                               name="city"
                               id="name"
-                              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-200 dark:text-gray-900 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-200 dark:text-gray-900 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                               onChange={(e) =>
                                 setStore({...store, city: e.target.value})
                               }
                             />
                           </div>
 
-                          <div class="sm:col-span-2">
+                          <div className="sm:col-span-2">
                             <label
                               for="location"
-                              class="block mb-4 text-md font-medium text-gray-900 dark:text-black"
+                              className="block mb-4 text-md font-medium text-gray-900 dark:text-black"
                             >
                               Location
                             </label>
@@ -119,7 +119,7 @@ export default function StoreLocation({handlePageUpdate}) {
                               id="location"
                               rows="5"
                               name="location"
-                              class="block p-2.5 w-full text-sm text-black-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-200 dark:border-gray-900 dark:placeholder-black-900 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                              className="block p-2.5 w-full text-sm text-black-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-200 dark:border-gray-900 dark:placeholder-black-900 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500"
                               placeholder="Write a description..."
                               onChange={(e) =>
                                 setStore({...store, location: e.target.value})

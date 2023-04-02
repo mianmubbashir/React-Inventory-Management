@@ -34,8 +34,6 @@ export default function AddProduct({handlePageUpdate}) {
   };
   
 
-
-
   
   return (
     <>
@@ -81,10 +79,10 @@ export default function AddProduct({handlePageUpdate}) {
                         </Dialog.Title>
 
                         <form>
-                          <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                          <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                             <div>
                               <label
-                                class="text-md font-medium text-gray-700 dark:text-gray-900"
+                                className="text-md font-medium text-gray-700 dark:text-gray-900"
                                 htmlfor="username"
                               >
                                 Product Name
@@ -102,7 +100,7 @@ export default function AddProduct({handlePageUpdate}) {
 
                             <div>
                               <label
-                                class="text-md font-medium text-gray-700 dark:text-gray-900"
+                                className="text-md font-medium text-gray-700 dark:text-gray-900"
                                 for="manufacturer"
                               >
                                 Manufacturer
@@ -117,10 +115,10 @@ export default function AddProduct({handlePageUpdate}) {
                               />
                             </div>
 
-                            <div class="sm:col-span-2">
+                            <div className="sm:col-span-2">
                               <label
                                 for="description"
-                                class="block mb-4 text-md font-medium text-gray-900 dark:text-black"
+                                className="block mb-4 text-md font-medium text-gray-900 dark:text-black"
                               >
                                 Description
                               </label>

@@ -69,3 +69,57 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 # React-Inventory-Management
+
+  const [patientdata, setPatientData] = useState();
+  console.log("hello", patientdata);
+  const [filterData, setFilterData] = useState();
+  console.log("hello//////", filterData);
+
+
+  useEffect(() => {
+    const dataRef = ref(database, "Post");
+    const postIdQuery = query(
+      dataRef,
+      orderByChild("userID"),
+      equalTo(authcontext.user)
+    );
+
+    onValue(postIdQuery, (snapshot) => {
+      const data = snapshot.val();
+      if (data !== null) {
+        const postArr = Object.keys(data).map((key) => ({
+          postuid: key,
+          ...data[key],
+        }));
+        setPatientData(postArr);
+        setFilterData(postArr);
+      } else {
+        console.log("No data");
+      }
+    }
+    );
+  }, []);
+  // console.log("data",filterData);
+
+
+
+const [patientData, setPatientData] = useState()
+cosnst [filterData, setFilterData] = useState()
+
+useEffect(())=>{
+    const dataRef = ref(database, "Post");
+    const postQuery = query(
+        dataRef,
+        orderByChild(userID),
+        equalTo(authcontext.user)
+    );
+    onValue(postQuery, (snapshot) => {
+        const data = snapshot.val();
+        if(data!== null)
+        const postArr = object.keys(data).map((key)=>{
+            postuid: key,
+            ...data[key]
+        })
+        setPatientData[postArr]
+    })
+}

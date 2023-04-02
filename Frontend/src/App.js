@@ -19,7 +19,6 @@ function App() {
 
 
   let currentUser = JSON.parse(localStorage.getItem("user"));
-  // console.log("USER: ",user)
 
   useEffect(()=>{
     if(currentUser){

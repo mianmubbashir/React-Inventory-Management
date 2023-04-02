@@ -18,6 +18,8 @@ function Inventory() {
   const [showUpdateProduct, setShowUpdateProduct] = useState(false); 
 
 
+
+
   //one time modal render for update button
   const [updatedProduct, setUpdatedProduct] = useState(null); 
 
@@ -59,7 +61,6 @@ function Inventory() {
   //Delete Product
   const deleteProduct = async (id) => {
     const x = window.confirm("Are you sure?");
-    console.log(x);
     if (!x) return null;
     try {
       const res = await axios.delete(`http://localhost:4000/api/Product/delete/${id}`);

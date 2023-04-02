@@ -4,9 +4,8 @@ import { Navigate } from "react-router-dom";
 
 function ProtectedRoutes(props){
     const auth = useContext(AuthContext);
-    console.log('====================================');
-    console.log(auth);
-    console.log('====================================');
+    // console.log('====');
+    // console.log(auth);
     
     if(!auth.user){
         return <Navigate to="/signin" replace />

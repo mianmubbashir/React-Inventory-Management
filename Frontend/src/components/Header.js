@@ -13,7 +13,7 @@ export default function Header() {
                   <div className="flex items-center">
                     <div className="hidden md:block">
                     <span
-                  class="grid place-content-center rounded-lg bg-teal-100 text-md font-bold text-gray-900"
+                  className="grid place-content-center rounded-lg bg-teal-100 text-md font-bold text-gray-900"
                   >
                    The Lead Commerce
                 </span>

@@ -8,7 +8,7 @@ function Purchase() {
   // console.log("Purchase", purchase)
   const [showPurchaseModal, setShowPurchaseModal] = useState(false);
 //update page
-const [pageUpdate, setPageUpdate] = useState()
+  const [pageUpdate, setPageUpdate] = useState()
 
   const showPurchase = () => {
     setShowPurchaseModal(!showPurchaseModal);
@@ -41,15 +41,15 @@ const [pageUpdate, setPageUpdate] = useState()
 
 
         <div>
-          <div class="py-6">
+          <div className="py-6">
             <div className="flex justify-between ">
-              <div class="mt-7 text-lg font-bold leading-6 text-gray-900 ml-2 ">
+              <div className="mt-7 text-lg font-bold leading-6 text-gray-900 ml-2 ">
                 Purchase Details
               </div>
 
-              <div class="flex justify-end gap-4  whitespace-nowrap px-4 py-2 text-end font-large text-gray-900">
+              <div className="flex justify-end gap-4  whitespace-nowrap px-4 py-2 text-end font-large text-gray-900">
                 <button
-                  class="inline-block rounded border border-blue-600 bg-blue-600 px-4 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring "
+                  className="inline-block rounded border border-blue-600 bg-blue-600 px-4 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring "
                   href="/download"
                   onClick={showPurchase}
                 >
@@ -59,38 +59,38 @@ const [pageUpdate, setPageUpdate] = useState()
               </div>
             </div>
 
-            <table class="min-w-full divide-y-2 divide-gray-200 text-md bg-white">
+            <table className="min-w-full divide-y-2 divide-gray-200 text-md bg-white">
               <thead>
                 <tr>
-                  <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
                     Product Name
                   </th>
-                  <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
                     Quantity
                   </th>
-                  <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
                    Purchase Date
                   </th>
-                  <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
                     Total Amount
                   </th>
                 </tr>
               </thead>
 
-              <tbody class="divide-y divide-gray-200">
-              {purchase.map((element) => {
+              <tbody className="divide-y divide-gray-200">
+              {purchase.map((element, index) => {
                 return (
-                  <tr >
-                  <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                  <tr key={index}>
+                  <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                     {element.productId}
                   </td>
-                  <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     {element.quantity}
                     </td>
-                  <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                   {element.date.slice(0,10)}
                   </td>
-                  <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     {element.amount}
                   </td>
                 </tr>
