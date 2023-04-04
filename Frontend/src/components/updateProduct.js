@@ -81,6 +81,7 @@ export default function UpdateProduct({ element }) {
 
                         <form>
                           <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                            
                             <div>
                               <label
                                 className="text-md font-medium text-gray-700 dark:text-gray-900"
@@ -103,6 +104,7 @@ export default function UpdateProduct({ element }) {
                               />
                             </div>
 
+
                             <div>
                               <label
                                 className="text-md font-medium text-gray-700 dark:text-gray-900"
@@ -124,6 +126,7 @@ export default function UpdateProduct({ element }) {
                                 }
                               />
                             </div>
+
 
                             <div className="sm:col-span-2">
                               <label
@@ -149,34 +152,7 @@ export default function UpdateProduct({ element }) {
                               </textarea>
                             </div>
 
-                            <div>
-                              <label
-                                for="category"
-                                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                              >
-                                Category
-                              </label>
-                              <select
-                                id="category"
-                                className="block p-2.5 w-full text-sm text-black-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-200 dark:border-gray-900 dark:placeholder-black-900 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                onChange={(e) =>
-                                  setProduct({
-                                    ...product,
-                                    category: e.target.value,
-                                  })
-                                }
-                              >
-                                <option selected="" value="Electronics">
-                                  Electronics
-                                </option>
-                                <option value="TV">TV/Monitors</option>
-                                <option value="PC">PC</option>
-                                <option value="Gaming Console">
-                                  Gaming/Console
-                                </option>
-                                <option value="Phones">Phones</option>
-                              </select>
-                            </div>
+
                           </div>
                         </form>
                       </div>

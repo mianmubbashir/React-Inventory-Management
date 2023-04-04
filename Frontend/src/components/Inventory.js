@@ -81,7 +81,7 @@ function Inventory() {
 
   return (
     <div className="flex justify-center bg-slate-20 flex-col gap-6 h-fit ">
-      <div className="">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y-2 divide-gray-200 text-sm">
             <thead>
@@ -141,8 +141,8 @@ function Inventory() {
 
 
 
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <div>
-        <div className="py-20">
           <div className="flex justify-between ">
             <div className="mt-6 text-lg font-bold leading-6 text-gray-900 ml-3 ">
              Products
@@ -180,7 +180,7 @@ function Inventory() {
               {product.map((element, index) => {
                 return (
                   <tr key={index}>
-                    <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-700">
+                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                       {element.name}
                     </td>
                     <td className="whitespace-nowrap px-4 py-2 text-gray-700">

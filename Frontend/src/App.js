@@ -4,7 +4,6 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Signin from "./components/Signin";
 import Signup from "./components/Signup";
 import Layout from "./components/Layout";
-import Dashboard from "./components/Dashboard";
 import Inventory from "./components/Inventory";
 import Sales from "./components/Sales";
 import Purchase from "./components/Purchase";
@@ -24,7 +23,6 @@ function App() {
     if(currentUser){
       setUser(currentUser._id)
       setLoader(false)
-      // console.log(currentUser)
     }
     else{
       setUser("");
@@ -71,8 +69,7 @@ function App() {
       <Route path="/signup" element={<Signup />} />
       <Route path="/signin" element={<Signin />} />
         <Route path="/" element={<ProtectedRoutes><Layout /></ProtectedRoutes>}>
-          <Route index element={<Dashboard />} />
-          <Route path='/inventory' element={<Inventory />} />
+          <Route index element={<Inventory />} />
           <Route path="/sales" element={<Sales />} />
           <Route path="/Purchase" element={<Purchase />} />
           <Route path="/managestore" element={<ManageStore />} />

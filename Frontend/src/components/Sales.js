@@ -36,9 +36,9 @@ const handlePageUpdate = () =>{
 
   return (
     <div>
-      <div>
-        <div className="overflow-x-auto">
-          <div className="flex justify-between ">
+       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="overflow-x-auto ">
+          <div className="flex flex-col md:flex-row justify-between">
             <div className="mt-5 text-lg font-bold leading-6 text-gray-900 ml-2">
               Sales detail
             </div>
@@ -59,19 +59,19 @@ const handlePageUpdate = () =>{
             <table className="min-w-full divide-y-2 divide-gray-200 text-md bg-white">
               <thead>
                 <tr>
-                  <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  <th className="w-1/6  px-4 py-2 text-left font-medium text-gray-900">
                     Product Name
                   </th>
-                  <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  <th className="w-1/6  px-4 py-2 text-left font-medium text-gray-900">
                     store Name
                   </th>
-                  <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  <th className="w-1/6  px-4 py-2 text-left font-medium text-gray-900">
                     Quantity
                   </th>
-                  <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  <th className="w-1/6  px-4 py-2 text-left font-medium text-gray-900">
                     Sale Date
                   </th>
-                  <th className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900">
+                  <th className="w-1/6  px-4 py-2 text-left font-medium text-gray-900">
                     Total Sale Amount
                   </th>
                 </tr>
@@ -81,19 +81,19 @@ const handlePageUpdate = () =>{
                 {sale.map((element, index) => {
                   return (
                     <tr key={index}>
-                      <td className="whitespace-nowrap px-4 py-2  text-gray-900">
+                      <td className="ww-1/6  px-4 py-2  text-gray-900">
                         {element.productId}
                       </td>
-                      <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                      <td className="w-1/6 px-4 py-2 text-gray-700">
                         {element.storeId}
                       </td>
-                      <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                      <td className="w-1/6  px-4 py-2 text-gray-700">
                         {element.quantity}
                       </td>
-                      <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                      <td className="w-1/6  px-4 py-2 text-gray-700">
                         {element.date.slice(0, 10)}
                       </td>
-                      <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                      <td className="w-1/6  px-4 py-2 text-gray-700">
                         {element.amount}
                       </td>
                     </tr>

@@ -7,6 +7,7 @@ function ManageStore() {
   const [store, setStore] = useState([]);
   // console.log(store)
   const [showAddStore, setShowAddStore] = useState(false); //store modal
+  
   const showStore = () => {
     setShowAddStore(!showAddStore);
   };
@@ -34,7 +35,7 @@ function ManageStore() {
 
 
   return (
-    <div>
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
       <div className="xl:w-full w-11/12 mx-auto  my-6 md:w-2/3 sm:px-1 py-4 rounded-md gap-4">
         <div className="flex justify-between ">
           <div className="text-lg text-gray-900 dark:text-gray-900 font-bold ">

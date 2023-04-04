@@ -10,22 +10,9 @@ function Sidebar() {
   };
 
   return (
-    <div className="flex h-screen flex-col justify-between border-r bg-white">
+    <div className="flex h-screen flex-col justify-between border-r bg-white ">
       <div className="px-4 py-6">
         <nav aria-label="Main Nav" className="mt-2 flex flex-col space-y-1">
-          <summary className="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-900 hover:bg-gray-100 hover:text-gray-700">
-            <div className="flex items-center gap-2">
-              <img
-                className="w-5 h-5"
-                src={require("../assets/dashboard.png")}
-                alt="Your Company"
-              />
-              <span className="text-sm font-medium">
-                {" "}
-                <Link to="/">Dashboard</Link>
-              </span>
-            </div>
-          </summary>
 
           <summary className="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-900 hover:bg-gray-100 hover:text-gray-700">
             <div className="flex items-center gap-2">
@@ -34,9 +21,9 @@ function Sidebar() {
                 src={require("../assets/inventory.png")}
                 alt="Your Company"
               />
-              <span className="text-sm font-medium">
+              <span className="text-sm font-semibold">
 
-                <Link to="/Inventory">Inventory</Link>
+                <Link to="/">Inventory</Link>
               </span>
             </div>
           </summary>
@@ -48,7 +35,7 @@ function Sidebar() {
                 src={require("../assets/sales.png")}
                 alt="Your Company"
               />
-              <span className="text-sm font-medium">
+              <span className="text-sm font-semibold">
                 <Link to="/Sales">Sales</Link>
               </span>
             </div>
@@ -61,7 +48,7 @@ function Sidebar() {
                 src={require("../assets/inventory.png")}
                 alt="Your Company"
               />
-              <span className="text-sm font-medium ">
+              <span className="text-sm font-semibold ">
                 <Link to="/Purchase">Purchase</Link>
               </span>
             </div>
@@ -74,7 +61,7 @@ function Sidebar() {
                 src={require("../assets/location.png")}
                 alt="Your Company"
               />
-              <span className="text-sm font-medium">
+              <span className="text-sm font-semibold">
                 <Link to="/managestore">Manage Store</Link>
               </span>
             </div>
@@ -97,12 +84,10 @@ function Sidebar() {
                 />
               </svg>
 
-              <span className="text-sm font-medium" onClick={logoutUser}>
+              <span className="text-sm font-semibold" onClick={logoutUser}>
                 Logout
               </span>
             </div>
-
-            <span className="shrink-0 transition duration-300 group-open:-rotate-180"></span>
           </summary>
         </details>
       </div>

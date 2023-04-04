@@ -12,6 +12,7 @@ export default function AddProduct({handlePageUpdate}) {
   });
   // console.log("Product: ", product);
 
+  
   const [open, setOpen] = useState(true); 
   const cancelButtonRef = useRef(null);
 

@@ -7,8 +7,8 @@ const Layout = () => {
     <>
       <div>
         <Header />
-        <div className="grid grid-cols-12 ">
-          <div className="grid col-span-2 ">
+        <div className="grid grid-cols-12">
+          <div className="col-span-2 md:grid hidden">
             <Sidebar />
           </div>
           <div className="grid grid-flow-col col-span-10 ">

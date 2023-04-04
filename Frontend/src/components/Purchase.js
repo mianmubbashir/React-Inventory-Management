@@ -32,16 +32,12 @@ function Purchase() {
   };
 
 
-
-
-
   return (
     <div>
       <div className="flex justify-center bg-slate-20 flex-col gap-6 h-fit">
-
-
+        
         <div>
-          <div className="py-6">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex justify-between ">
               <div className="mt-7 text-lg font-bold leading-6 text-gray-900 ml-2 ">
                 Purchase Details

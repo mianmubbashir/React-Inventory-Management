@@ -46,7 +46,6 @@ export default function Signin() {
           console.log("Something went wrong ", error);
         });
         authCheck();
-    //  console.log("Auth: ", authcontext);
   };
 
 
@@ -126,7 +125,7 @@ export default function Signin() {
               <button
                 type="submit"
                 onClick={loginUser}
-                className="group relative flex w-full justify-center rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="group relative flex w-full justify-center rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 cursor-progress"
               >
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                   <LockClosedIcon
