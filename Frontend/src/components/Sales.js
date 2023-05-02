@@ -1,13 +1,13 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AddSale from "./AddSale";
-import { useEffect } from "react";
 import axios from "axios";
 
 function Sales() {
   const [sale, setSale] = useState([]);
   // console.log('sale ////',sale)
   const [showAddSale, setShowAddSale] = useState(false);
+
 //page update
   const [pageUpdate, setPageUpdate] = useState()
 
@@ -15,9 +15,9 @@ function Sales() {
     setShowAddSale(!showAddSale);
   };
 
-const handlePageUpdate = () =>{
+  const handlePageUpdate = () =>{
   setPageUpdate(!pageUpdate)
-}
+  };
 
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const handlePageUpdate = () =>{
 
   return (
     <div>
-       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+       <div className="container mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="overflow-x-auto ">
           <div className="flex flex-col md:flex-row justify-between">
             <div className="mt-5 text-lg font-bold leading-6 text-gray-900 ml-2">

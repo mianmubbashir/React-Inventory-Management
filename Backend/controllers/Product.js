@@ -14,7 +14,6 @@ const addProduct = async (req, res) => {
     }).catch((error)=>{
        console.log(error)
     })
-
 };
 
 //Get Product

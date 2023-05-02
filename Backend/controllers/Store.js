@@ -3,6 +3,7 @@ const Store = require("../models/Store");
 // Add Store Details
 const addStore = async (req, res) => {
     const addStore = await new Store({
+        userId: req.body.userId,
         name: req.body.name,
         city: req.body.city,
         location: req.body.location,

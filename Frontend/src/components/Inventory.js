@@ -1,24 +1,20 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import AddProduct from "./AddProduct";
 import UpdateProduct from "./updateProduct";
 import axios from "axios";
 
+
 function Inventory() {
   const [product, setProduct] = useState([]);
   // console.log("GET PRODUCT////////", product)
-
   //page update
   const [pageUpdate, setPageUpdate] = useState(); 
 
-  
 //product modal
   const [showAddProduct, setShowAddProduct] = useState(false); 
   //update modal
   const [showUpdateProduct, setShowUpdateProduct] = useState(false); 
-
-
-
 
   //one time modal render for update button
   const [updatedProduct, setUpdatedProduct] = useState(null); 
@@ -50,7 +46,7 @@ function Inventory() {
   const fetchProducts = async () => {
     try {
       const res = await axios.get("http://localhost:4000/api/Product/get");
-      setProduct(res.data);
+      setProduct(res.data)
     } catch (error) {
       console.log("PRODUCTS: ERROR", error);
     }
@@ -81,7 +77,7 @@ function Inventory() {
 
   return (
     <div className="flex justify-center bg-slate-20 flex-col gap-6 h-fit ">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8" >
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y-2 divide-gray-200 text-sm">
             <thead>
@@ -92,7 +88,7 @@ function Inventory() {
               </tr>
             </thead>
 
-            <tbody className="">
+            <tbody >
               <tr>
                 <td className="whitespace-nowrap px-4 py-2 font-medium text-blue-900">
                   Categories
@@ -143,7 +139,7 @@ function Inventory() {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <div>
-          <div className="flex justify-between ">
+          <div className="flex justify-between">
             <div className="mt-6 text-lg font-bold leading-6 text-gray-900 ml-3 ">
              Products
             </div>

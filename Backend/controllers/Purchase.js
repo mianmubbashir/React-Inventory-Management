@@ -3,6 +3,7 @@ const AddPurchase = require("../models/Purchase");
 // Add Purchase Details
 const addPurchase = async (req, res) => {
     const addPurchase = await new AddPurchase({
+        // userId: req.body.userId,
         productId: req.body.productId,
         quantity: req.body.quantity,
         date: req.body.date,

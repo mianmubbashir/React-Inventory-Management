@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const AddProductSchema = new mongoose.Schema({
-    ProductID: String,
-    userId: String,
-    name: String,
-    manufacturer: String,
-    description: String,
+  ProductID: String,
+  userId: String,
+  name: String,
+  manufacturer: String,
+  description: String,
 },
  { timestamps: true }
 )

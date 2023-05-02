@@ -67,7 +67,7 @@ export default function Signin() {
           </h2>
           <form
             className="mt-8 space-y-8"
-            action="#"
+            // action="#"
             onSubmit={(e) => e.preventDefault()}
           >
             <input type="hidden" name="remember" defaultValue="true" />
@@ -112,12 +112,11 @@ export default function Signin() {
 
             <div className="flex items-center justify-between">
               <div className="text-sm">
-                <a
-                  href="#"
+                <span
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
                   Forgot your password? &nbsp;<Link to="/signup">Signup</Link>
-                </a>
+                </span>
               </div>
             </div>
 
@@ -125,7 +124,7 @@ export default function Signin() {
               <button
                 type="submit"
                 onClick={loginUser}
-                className="group relative flex w-full justify-center rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 cursor-progress"
+                className="group relative flex w-full justify-center rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 "
               >
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                   <LockClosedIcon

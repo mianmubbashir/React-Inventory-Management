@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const AddPurchaseSchema = new mongoose.Schema({
-    userId: String,
-    productId: String,
-    quantity: String,
-    date: Date,
-    amount: String,
+  userId: String,
+  productId: String,
+  quantity: String,
+  date: Date,
+  amount: String,
 },
  { timestamps: true }
 )

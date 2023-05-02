@@ -1,13 +1,14 @@
 import React from "react";
 import AddPurchase from "./AddPurchase";
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import axios from "axios";
 
 function Purchase() {
   const [purchase, setPurchase] = useState([]);
   // console.log("Purchase", purchase)
   const [showPurchaseModal, setShowPurchaseModal] = useState(false);
-//update page
+
+  //update page
   const [pageUpdate, setPageUpdate] = useState()
 
   const showPurchase = () => {

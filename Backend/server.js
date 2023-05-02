@@ -40,7 +40,6 @@ app.post("/api/signin", async (req, res) => {
         } else {
             res.status(401).send("Invalid Credentials");
             userAuthCheck = null;
-
         }
     }
     catch (error) {
@@ -70,7 +69,7 @@ app.post("/api/signup", async (req, res) => {
         email: req.body.email,
         password: req.body.password,
     })
-
+    
     let newUser = await registerUser.save();
 
     res.json(newUser);

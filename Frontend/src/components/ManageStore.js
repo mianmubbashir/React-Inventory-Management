@@ -1,11 +1,12 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import StoreLocation from "./StoreLocation";
 import axios from "axios";
 
 function ManageStore() {
   const [store, setStore] = useState([]);
   // console.log(store)
+
   const [showAddStore, setShowAddStore] = useState(false); //store modal
   
   const showStore = () => {
@@ -18,7 +19,6 @@ function ManageStore() {
     setPageUpdate(!pageUpdate)
   }
 
-  
 
   useEffect(() => {
     fetchStores();
@@ -58,7 +58,8 @@ function ManageStore() {
         <div className="flex flex-col gap-6">
           {store.map((element) => {
             return (
-              <>
+              <div key={element._id} >
+
                 <div className="flex bg-gray-700 rounded-md relative">
                   <div className="flex">
                     <div className="flex flex-col justify-center pl-4 py-2 sm:py-8">
@@ -76,7 +77,7 @@ function ManageStore() {
                     </div>
                   </div>
                 </div>
-              </>
+              </div>
             );
           })}
         </div>

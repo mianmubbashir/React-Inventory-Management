@@ -116,12 +116,11 @@ export default function Signup() {
 
             <div className="flex items-center justify-between">
               <div className="text-sm">
-                <a
-                  href="#"
+                <span
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
                   Already have an account? &nbsp;<Link to="/signin">Signin</Link>
-                </a>
+                </span>
               </div>
             </div>
 
